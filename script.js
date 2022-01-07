@@ -22,8 +22,14 @@ timeField.each(function () {
 var saveBtns = $('.btn') 
 saveBtns.each(function() {
     $(this).click(function(event){
-        var plan = $(this).parent().siblings('.time-input').val()
-        var planTime = $(this).parent().siblings('.time-input').data('time')
+        var plan = $(this).parent().siblings('.col-10').children('.time-input').val()
+        var planTime = $(this).parent().siblings('.col-10').children('.time-input').data('time')
         localStorage.setItem(planTime, plan)
     })
+})
+
+timeField.each(function () {
+    var timeData = $(this).data('time')
+    var stored = localStorage.getItem(timeData)
+    $(this).val(stored)
 })
