@@ -18,3 +18,12 @@ timeField.each(function () {
 }) 
 
 // input field
+
+var saveBtns = $('.btn') 
+saveBtns.each(function() {
+    $(this).click(function(event){
+        var plan = $(this).parent().siblings('.time-input').val()
+        var planTime = $(this).parent().siblings('.time-input').data('time')
+        localStorage.setItem(planTime, plan)
+    })
+})
