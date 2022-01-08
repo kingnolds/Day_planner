@@ -1,13 +1,13 @@
 // add time to top of page
 var currentDay = $('#currentDay')
-currentDay.text(moment().format('MMMM Do YYYY, h:mm:ss a'))
+currentDay.text(moment().format('dddd, MMMM Do YYYY'))
 console.log('hello')
 
 // change text input color based on hour of day
 var timeField = $('.time-input')
 timeField.each(function () {
     var timeData = $(this).data('time')
-    var hour = 12 //moment().hours()
+    var hour = moment().hours()
     if (timeData < hour) {
         $(this).addClass('past')
     } else if (timeData === hour) {
@@ -19,11 +19,12 @@ timeField.each(function () {
 
 // input field
 
-var saveBtns = $('.btn') 
+var saveBtns = $('.saveBtn') 
 saveBtns.each(function() {
-    $(this).click(function(event){
-        var plan = $(this).parent().siblings('.col-10').children('.time-input').val()
-        var planTime = $(this).parent().siblings('.col-10').children('.time-input').data('time')
+    $(this).click(function(){
+        var plan = $(this).parent().children('.time-input').val()
+        console.log(plan);
+        var planTime = $(this).parent().children('.time-input').data('time')
         localStorage.setItem(planTime, plan)
     })
 })
