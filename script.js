@@ -1,9 +1,9 @@
-// add time to top of page
+// Add current day to top of page
 var currentDay = $('#currentDay')
 currentDay.text(moment().format('dddd, MMMM Do YYYY'))
-console.log('hello')
 
-// change text input color based on hour of day
+
+// Change text input color based on current hour of day
 var timeField = $('.time-input')
 timeField.each(function () {
     var timeData = $(this).data('time')
@@ -17,7 +17,7 @@ timeField.each(function () {
     }
 }) 
 
-// input field
+// Save Input to local storage on Save button Click
 
 var saveBtns = $('.saveBtn') 
 saveBtns.each(function() {
@@ -29,6 +29,7 @@ saveBtns.each(function() {
     })
 })
 
+// Fill saved information from local storage
 timeField.each(function () {
     var timeData = $(this).data('time')
     var stored = localStorage.getItem(timeData)
